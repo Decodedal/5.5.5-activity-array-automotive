@@ -1,91 +1,32 @@
-// //this includes the vehicle class as a module
-// const { Vehicle } = require("./vehicle");
-// const VehicleModule = require("./vehicleBaseClass")
 
-// //this shows how to call from this module...
-// let v = new VehicleModule.Vehicle("Mecury", "Sedan", "1965", "color", "mileage");
-// console.log(v.make)
 
-// class Car extends Vehicle{
-//     constructor(make, model, year, color, mileage){
-//       super(make, model, year, color, mileage);
-//       this.maximumPassengers = 5;
-//       this.passenger = 0;
-//       this.numberOfWheels = 4;
-//       this.maximumSpeed = 160;
-//       this.fule = 10;
-//       this.scheduledService = false;
-//     }
-   
-//     loadPassenger(num){
-//         return this.passenger > this.maximumPassengers ? availableRoom = true : availableRoom = false;
-         
-//     }
-//     start(){
-//        return  this.fuel > 0 ? start = true : this.start = false;
-//     }
-//     scheduledService(mileage){
-//        return  mileage > 30000 ? timeForMatenance = true : timeForMatenance = false;
-//     }
-// }
 
-// let myCar = new Car('mercury', 'rad_sedan', '2002', 'white', 50000)
-
-// myCar.start()
-// myCar.loadPassenger(5)
-// myCar.stop()
-// myCar.checkService()
-
-// console.log(myCar)
-
+//
 
 const VehicleModule = require('./vehicle').Vehicle
 
-class Car extends VehicleModule {
-    constructor(make, model, year, color, mileage) {
-        super(make, model, year, color, mileage);
-        this.maxPassengers = 5;
-        this.passenger = 0;
-        this.numberOfWheels = 4;
-        this.maxSpeed = 160;
-        this.fuel = 10;
-        this.scheduleService = false;
+class Car extends VehicleModule{
+    constructor(make, model, year, color, mileage){
+    super(make, model, year, color, mileage);
+    this.maximumPassengers = 5;
+    this.passenger = 0;
+    this.numberOfWheels = 4; 
+    this.maximumSpeed = 160;
+    this.fule = 10;
+    this.scheduleService = false;
     }
-
-    checkService() {
-        if (this.mileage > 30000) {            
-            this.scheduleService = true
-            return this.scheduleService;                       
-        }
+    loadPassenger(num){
+        this.passenger = num 
+        this.passenger <= this.maximumPassengers ? console.log("their is avalable room") : console.log("Not enough room for all passengers");
     }
-
-    start() {
-        if (this.fuel > 0) {            
-            console.log("engine has started.");
-            return this.started = true
-        } else {
-            console.log("no fuel");
-            return this.started = false;
-        }
+    start(){
+        this.fule > 0 ? console.log("The car starts") : console.log("The car wont start")
     }
-
-    loadPassenger(num) {
-        if (this.passenger < this.maxPassengers) {
-            if ((num + this.passenger) <= this.maxPassengers) {
-                this.passenger = num;
-                return this.passenger;               
-            } else {
-                console.log(this.model + " " + this.make + " not have enough space to take all passengers.");
-
-            }
-        } else {
-            console.log(this.model + " " + this.make + " is full");
-        }
+    checkService(){
+        this.mileage >= 30000 ? this.scheduleService = true : this.scheduleService = false
+        console.log(this.scheduleService)
     }
-
-
 }
-
 
 let myCar = new Car('mercury', 'rad_sedan', '2002', 'white', 50000)
 
@@ -95,3 +36,7 @@ myCar.stop()
 myCar.checkService()
 
 console.log(myCar)
+
+
+
+
